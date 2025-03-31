@@ -8,10 +8,13 @@ html {
 
 body {
     font-family: "Nunito Sans", sans-serif !important;
-    /* background-image:url(/images/background.jpeg); */
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+body::selection {
+    background-color: #FEBF0F;
+    color: black;
+}
 
 a {
     text-decoration: none;
@@ -43,5 +46,35 @@ a {
 @media (min-width: 1200px) {
     .container {
         width: 1170px;
+    }
+}
+
+/* fade out animation */
+
+element{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #FEBF0F, transparent);
+    transform: translateX(-50%);
+    animation: expandLine 3s ease infinite alternate;
+}
+
+@keyframes expandLine {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        width: 100%;
+        opacity: 1;
     }
 }
