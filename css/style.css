@@ -126,7 +126,7 @@
 }
 
 /* Responsive Design */
-@media screen and (max-width: 1900px) {
+@media screen and (max-width: 10000px) {
     .log .container {
         width: 50%;
     }
