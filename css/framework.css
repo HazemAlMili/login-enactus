@@ -12,7 +12,7 @@ body {
 }
 
 body::selection {
-    background-color: #FEBF0F;
+    background-color: #febe0fad;
     color: black;
 }
 
