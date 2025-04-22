@@ -1,49 +1,157 @@
-.log .logo-img {
-    width: 200px;
-    padding: 10px;
-    margin: 10px;
-}
-
 .log .enactus-logo {
-    width: 100px;
+    width: 300px;
     padding: 10px;
-    margin: 10px;
+    /* margin: 10px; */
     position: absolute;
     z-index: 1;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 10px;
-
+    top: 20px;
+    left: 52%;
+    transform: translateX(-60%);
+    max-width: 100%;
+    height: auto;
+    transition: all 0.3s ease;
 }
 
-.log .background-img {
-    background-position: center;
-    background-size: cover;
+/* Enhanced animations for spans */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.95);
+        opacity: 0.7;
+    }
+}
+
+@keyframes orbit {
+    0% {
+        transform: rotate(0deg) translateX(10px) rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg) translateX(10px) rotate(-360deg);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+
+    50% {
+        transform: translateY(-15px);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+}
+
+@keyframes fadeInOut {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Apply enhanced animations to spans with responsive sizing */
+span img {
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    width: 7%;
+    height: auto;
     object-fit: cover;
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    z-index: -1;
 }
 
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: -1;
+span img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
+span:first-child img {
+    left: 15%;
+    top: 10%;
+    animation: float 6s infinite ease-in-out;
+    filter: brightness(1.05);
+}
 
+span:nth-child(2) img {
+    left: 85%;
+    top: 15%;
+    animation: pulse 4.5s infinite ease-in-out;
+    filter: brightness(1.02);
+}
+
+span:nth-child(3) img {
+    left: 50%;
+    top: 50%;
+    animation: orbit 12s infinite linear;
+    filter: contrast(1.05);
+    display: none;
+}
+
+span:nth-child(4) img {
+    left: 10%;
+    top: 70%;
+    animation: bounce 4s infinite;
+    filter: saturate(1.1);
+}
+
+span:nth-child(5) img {
+    left: 80%;
+    top: 75%;
+    animation: fadeInOut 5s infinite alternate ease-in-out;
+    filter: drop-shadow(0 0 5px rgba(254, 191, 15, 0.3));
+}
+
+/* Responsive container styling */
+.log .container {
+    background-color: transparent;
+    width: 50%;
+    margin: 0 auto 20px;
+    backdrop-filter: blur(2.5px);
+    border-radius: 10px;
+    position: relative;
+    padding: 20px;
+    overflow: hidden;
+    border: 2px solid #FEBF0F;
+    transition: all 0.3s ease;
+    max-width: 600px;
+}
 
 .log .container h1 {
     font-size: 3em;
     color: white;
     position: relative;
     display: inline-block;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
 }
 
 .log .container h1::before {
@@ -55,7 +163,7 @@
     height: 3px;
     background: linear-gradient(90deg, transparent, #FEBF0F, transparent);
     transform: translateX(-50%);
-    animation: expandLine 3s ease  infinite alternate;
+    animation: expandLine 3s ease infinite alternate;
 }
 
 @keyframes expandLine {
@@ -74,28 +182,19 @@
     }
 }
 
-.log .container {
-    background-color: transparent;
-    width: 0;
-    margin-bottom: 20px;
-    backdrop-filter: blur(2.5px);
-    border-radius: 10px;
-    position: relative;
-    padding: 5px;
-    overflow: hidden;
-    border: 2px solid #FEBF0F;
-}
-
-
+/* Form elements with responsive styling */
 .log .container .form input {
-    margin: 20px;
-    padding: 7px 25px;
-    width: 50%;
+    margin: 15px auto;
+    padding: 10px 25px;
+    width: 80%;
+    max-width: 400px;
     background-color: white;
     outline: none;
     border-radius: 15px;
     border: 1.5px solid #FEBF0F;
     transition: 0.3s;
+    display: block;
+    font-size: 16px;
 }
 
 .log .container .form input::placeholder {
@@ -105,87 +204,227 @@
 
 .log .container .form input:focus,
 .log .container .form input:hover {
-    border: 1.5px solid #FEBF0F;
-    background-color: #febe0f96;
+    background-color: transparent;
     color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(254, 191, 15, 0.3);
 }
 
 .log .container .form button {
     border-radius: 20px;
-    padding: 5px 20px;
+    padding: 10px 25px;
     width: 150px;
     background-color: #FEBF0F;
     outline: none;
     border: 1.5px solid #FEBF0F;
     transition: 0.3s;
+    margin: 15px auto;
+    display: block;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .log .container .form button:hover {
     background-color: transparent;
     color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(254, 191, 15, 0.3);
 }
 
-/* Responsive Design */
-@media screen and (max-width: 10000px) {
+/* Comprehensive responsive breakpoints */
+@media screen and (max-width: 1200px) {
     .log .container {
-        width: 50%;
+        width: 60%;
+    }
+
+    .log .container h1 {
+        font-size: 2.8em;
+    }
+
+    span img {
+        width: 8%;
     }
 }
 
 @media screen and (max-width: 992px) {
     .log .container {
-        width: 60%;
+        width: 70%;
     }
 
     .log .logo-img {
         width: 180px;
     }
 
-    .log .landing h1 {
+    .log .enactus-logo {
+        width: 300px;
+    }
+
+    .log .container h1 {
         font-size: 2.5em;
+    }
+
+    span img {
+        width: 9%;
     }
 }
 
 @media screen and (max-width: 768px) {
     .log .container {
-        width: 70%;
+        width: 80%;
+        left: -15px;
+        padding: 15px;
     }
 
     .log .logo-img {
         width: 150px;
     }
 
-    .log .landing h1 {
-        font-size: 2em;
+    .log .enactus-logo {
+        width: 300px;
+        left: 53%;
+    }
+
+    .log .container h1 {
+        font-size: 2.2em;
     }
 
     .log .container .form input {
-        width: 80%;
-        padding: 7px 20px;
+        width: 90%;
+        padding: 8px 20px;
+    }
+
+    span img {
+        width: 10%;
+    }
+
+    span:first-child img {
+        left: 10%;
+        top: 8%;
+    }
+
+    span:nth-child(2) img {
+        left: 80%;
+        top: 12%;
+    }
+
+    span:nth-child(5) img {
+        left: 75%;
+        top: 70%;
     }
 }
 
 @media screen and (max-width: 576px) {
     .log .container {
-        width: 90%;
+        width: 100%;
+        padding: 10px;
+        position: relative;
+        top: auto;
+        left: 0;
+        transform: none;
+        margin: 20px auto;
     }
 
-    .log .logo-img {
-        width: 120px;
+    .log .enactus-logo {
+        width: 250px;
     }
 
-    .log .landing h1 {
+    .log .container h1 {
         font-size: 1.8em;
     }
 
     .log .container .form input {
-        width: 90%;
+        width: 95%;
         padding: 7px 15px;
         font-size: 14px;
+        margin: 10px auto;
     }
 
     .log .container .form button {
         width: 120px;
-        padding: 5px 15px;
+        padding: 7px 15px;
+        font-size: 14px;
+    }
+
+    span img {
+        width: 12%;
+    }
+
+    span:first-child img {
+        left: 8%;
+        top: 25%;
+    }
+
+    span:nth-child(2) img {
+        left: 75%;
+        top: 25%;
+    }
+
+    span:nth-child(3) img {
+        left: 45%;
+        top: 45%;
+    }
+
+    span:nth-child(4) img {
+        left: 8%;
+        top: 77%;
+    }
+
+    span:nth-child(5) img {
+        left: 70%;
+        top: 85%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .log .container {
+        width: 95%;
+        padding: 10px 5px;
+    }
+
+    .log .logo-img {
+        width: 100px;
+    }
+
+    .log .enactus-logo {
+        width: 200px;
+    }
+
+    .log .container h1 {
+        font-size: 1.6em;
+    }
+
+    .log .container .form input {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    .log .container .form button {
+        width: 100px;
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    span img {
+        width: 15%;
+    }
+}
+
+/* Fix for very small screens */
+@media screen and (max-height: 500px) {
+    .log .container {
+        margin: 10px auto;
+        padding: 10px 5px;
+    }
+
+    .log .container .form input {
+        margin: 8px auto;
+    }
+
+    .log .container h1 {
+        margin-bottom: 10px;
+    }
+
+    span img {
+        display: none;
     }
 }
